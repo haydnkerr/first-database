@@ -1,0 +1,73 @@
+{% extends "layouts/default.njk" %}
+
+{% block content %}
+
+  <section class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <h1>{{ title }}</h1>
+        <form action="/" method="get">
+          <div class="form-group">
+            <label for="email">Search</label>
+            <input type="text" name="q" id="q" class="form-control" placeholder="type name of song" value="{{query}}" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10">
+        <hr>
+
+        {% if rows.length > 0 %}
+          <h2>Results</h2>
+          {% for track in rows %}
+            <div class="card mb-5">
+              <div class="card-body">
+                <h4 class="card-title">{{ track.song }}</h4>
+                <h5 class="card-title">Album: {{ track.title }}</h5>
+                <h5 class="card-title">Artist: {{ track.name }}</h5>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h2>No results</h2>
+        {% endif %}
+
+        {# {% if rows.length > 0 %}
+          <h2>Results</h2>
+          {% for track in rows %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h4 class="card-title">{{ track.name }}</h4>
+
+              </div>
+            </div>
+          {% endfor %}
+
+          {% for album in rows %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ album.title }}</h5>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h2>No results</h2>
+        {% endif %}
+
+        {% for artist in rows %}
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ artist.name }}</h5>
+            </div>
+          </div>
+        {% endfor %} #}
+      </div>
+    </div>
+
+  </section>
+
+{% endblock %}

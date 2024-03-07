@@ -2,5 +2,15 @@
 
 {% block content %}
   <h1>{{ title }}</h1>
-  <p>Edit <code>/views/index.njk</code> to modify this page.</p>
+  <form>
+    <input type="text">
+    <button type="submit" class="artist-search-btn">Search</button>
+  </form>
+
+  <ul>
+    {% for artist in rows %}
+      <li>{{ artist.name }}</li>
+    {% endfor %}
+  </ul>
+
 {% endblock %}
